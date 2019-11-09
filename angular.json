@@ -5,7 +5,18 @@
   "projects": {
     "cmail": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineStyle": true,
+          "prefix": "cmail",
+          "spec": false,
+          "flat":true,
+          "export": true
+        },
+        "@schematics/angular:directive": {
+          "prefix": "cmail"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -28,7 +39,8 @@
               "src/assets/css/globalFab.css",
               "src/assets/css/tooltip.css",
               "src/assets/css/errorMessages.css",
-              "src/assets/css/newEmail.css"
+              "src/assets/css/newEmail.css",
+              "src/assets/css/header.css"
             ],
             "scripts": []
           },

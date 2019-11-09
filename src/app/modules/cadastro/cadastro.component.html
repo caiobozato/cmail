@@ -1,0 +1,37 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+  <cmail-header></cmail-header>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div class="mdl-grid">
+        <form [formGroup]="formCadastro" (ngSubmit)="handleCadastrarUsuario()">
+
+          <app-cmail-form-group [campo]="formCadastro.get('nome')">
+            <input formControlName="nome" autofocus type="text" name="nome" cmailFormField>
+            <span class="mdl-textfield__error">Informar um nome é obrigatório</span>
+          </app-cmail-form-group>
+
+          <app-cmail-form-group [campo]="formCadastro.get('email')">
+            <input formControlName="email" type="text" name="email" cmailFormField>
+            <span class="mdl-textfield__error">Informar um nome é obrigatório</span>
+          </app-cmail-form-group>
+
+          <app-cmail-form-group [campo]="formCadastro.get('senha')">
+            <input formControlName="senha" type="password" name="senha" cmailFormField>
+            <span class="mdl-textfield__error">Informar um nome é obrigatório</span>
+          </app-cmail-form-group>
+
+          <app-cmail-form-group [campo]="formCadastro.get('avatar')">
+            <input formControlName="avatar" type="text" name="avatar" cmailFormField>
+          </app-cmail-form-group>
+
+          <div class="mdl-card__actions">
+            <button [disabled]="!formCadastro.valid" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+              Cadastrar
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
