@@ -7,12 +7,19 @@
 
           <app-cmail-form-group [campo]="formCadastro.get('nome')">
             <input formControlName="nome" autofocus type="text" name="nome" cmailFormField>
-            <span class="mdl-textfield__error">Informar um nome é obrigatório</span>
+
+            <div *ngIf="formCadastro.get('nome').errors">
+                <span class="mdl-textfield__error" *ngIf="formCadastro.get('nome').errors.required">Informar um nome é obrigatório</span>
+
+                <span class="mdl-textfield__error" *ngIf="formCadastro.get('nome').errors.minlength">
+                  Você digitou {{ formCadastro.get('nome').errors.minlength.actualLength }} caracteres. O mínimo de caracteres são: {{ formCadastro.get('nome').errors.minlength.requiredLength }}.
+                </span>
+            </div>
           </app-cmail-form-group>
 
           <app-cmail-form-group [campo]="formCadastro.get('email')">
             <input formControlName="email" type="text" name="email" cmailFormField>
-            <span class="mdl-textfield__error">Informar um nome é obrigatório</span>
+            <span class="mdl-textfield__error">Informar um email é obrigatório</span>
           </app-cmail-form-group>
 
           <app-cmail-form-group [campo]="formCadastro.get('senha')">
@@ -25,7 +32,8 @@
           </app-cmail-form-group>
 
           <div class="mdl-card__actions">
-            <button [disabled]="!formCadastro.valid" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+            <button [disabled]="!formCadastro.valid"
+              class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
               Cadastrar
             </button>
           </div>
