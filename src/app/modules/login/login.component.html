@@ -6,10 +6,28 @@
           <header class="mdl-card__title">
             <h1 class="mdl-card__title-text">Bem vindos/as ao CMail!</h1>
           </header>
+
+          <section *ngIf="mensagemErro" class="mdl-textfield is-invalid">
+            <p class="mdl-textfield__error">
+              {{ mensagemErro.message }}
+            </p>
+          </section>
     
-          <form autocomplete="off" class="mdl-card__supporting-text">
+          <form #formLogin="ngForm" (ngSubmit)="handleLogin(formLogin)" autocomplete="off" class="mdl-card__supporting-text">
     
-            <!-- aqui os campos do formulário -->
+            <app-cmail-form-group [campo]="email">
+              <input type="email" #email="ngModel" [(ngModel)]="login.email" name="email" cmailFormField required autofocus>
+              <span class="mdl-textfield__error" *ngIf="email.invalid">
+                Obrigatório informar um email!
+              </span>
+            </app-cmail-form-group>
+
+            <app-cmail-form-group [campo]="senha">
+              <input type="password" #senha="ngModel" [(ngModel)]="login.password" name="senha" cmailFormField required>
+              <span class="mdl-textfield__error" *ngIf="senha.invalid">
+                Obrigatório informar senha!
+              </span>
+            </app-cmail-form-group>
     
             <div class="mdl-card__actions mdl-card--border">
               <a routerLink="/cadastro" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
@@ -20,7 +38,6 @@
               </button>
             </div>
           </form>
-    
         </article>
       </div>
     </div>
