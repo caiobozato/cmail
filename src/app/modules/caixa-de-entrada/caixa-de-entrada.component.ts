@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { EmailService } from '../../services/email.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -15,7 +15,7 @@ import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
     }
   `]
 })
-export class CaixaDeEntradaComponent {
+export class CaixaDeEntradaComponent implements OnInit {
 
   private _isNewEmailFormOpen = false;
   mensagemErro;
@@ -51,5 +51,14 @@ export class CaixaDeEntradaComponent {
         }
       );
     formEmail.reset();
+  }
+
+  ngOnInit() {
+    this.emailService
+      .listar()
+      .subscribe(
+        lista => {
+          this.emailList = lista;
+        })
   }
 }
