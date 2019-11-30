@@ -18,7 +18,7 @@ const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'inbox'
+        redirectTo: 'login'
     },
     {
         path: '**',

@@ -3,6 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { PageDataService } from 'src/app/services/page.service';
  
 @Component({
   selector: 'app-cmail-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-  constructor(private loginService: LoginService, private roteador: Router) { }
+  constructor(private loginService: LoginService, private roteador: Router, private pageService: PageDataService) { }
 
   ngOnInit() { }
 
@@ -35,5 +36,6 @@ export class LoginComponent implements OnInit {
           }
         );
     }
+    this.pageService.defineTitulo('Login - Cmail');
   }
 }
